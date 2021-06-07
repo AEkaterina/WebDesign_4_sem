@@ -1,0 +1,90 @@
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Lab 4</title>
+        <script src="https://code.jquery.com/jquery-git1.js"></script>
+
+        <style>
+            h2 {
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-style: italic;
+                margin-left: 130px;
+            }
+
+            #path {
+                width: 300px;
+                height: 30px;
+                display: block;
+                position: relative;
+                border: 2px solid black;
+                margin: 20px 40px;
+                border-radius: 20px;
+            }
+
+            #moving {
+                display: block;
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                background-color:aqua;
+                border-radius: 50%;
+            }
+
+            button {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 13pt;
+                margin-left: 150px;
+                width: 60px;
+                height: 40px;
+                border-radius: 10px;
+                border-color: black;
+                background-color:lightblue;
+            }          
+
+            #percentage {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 15pt;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h2>Анимация</h2>
+        <div id="path">
+            <div id="moving"></div>
+        </div>
+            <button id="run">Пуск!</button>
+            <span id="percentage">0</span>%
+
+        <script>
+            $('#run').click(function() {
+                console.log("Кнопка нажата");
+                var $button = $(this);
+                
+                $('#path')
+                .find('#moving')
+                .animate({left: 270}, 
+                    {
+                        duration: 2000,
+                        complete: function() {
+                            $button.prop('disabled', true);
+                        },
+                        progress: function(animation, progress) {
+                            $('#percentage').text(Math.round(progress * 100));
+                        }
+                    }
+                );
+
+            // 2 синтаксис:
+            /*    $('#path')
+                    .find('#moving')
+                    .animate({left: 270}, 2500, "linear", function() { alert("hi!"); });*/
+            });
+
+
+        </script>
+
+</body>
+</html>

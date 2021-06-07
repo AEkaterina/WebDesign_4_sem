@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lab 2</title>
+
+        <style>
+            h2 {
+                margin-left: 50px;
+            }
+            button {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin-left: 100px;
+                font-size: 13pt;
+                display: inline-block;
+                border-radius: 10px;
+                border-color: black;
+                background-color: powderblue;
+                padding: 5px 10px;
+            }
+        </style>
+    </head>
+
+<script>
+function loadDoc()
+{
+var request = new XMLHttpRequest();
+request.onreadystatechange=function() {
+    if (request.readyState==4 && request.status==200) {
+        document.getElementById("Div").innerHTML = request.responseText;
+    }
+}
+request.open("GET","1.txt",true);
+request.send();
+}
+</script>
+
+<body>
+<div id="Div"><h2>Получить данные из text.txt</h2></div>
+<button type="button" onclick="loadDoc()">Изменить Содержимое</button>
+</body>
+</html>

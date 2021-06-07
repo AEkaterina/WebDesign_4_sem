@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lab 1</title>
+        
+        <style>
+            h2 {
+                margin-left: 160px;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            
+            button {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 13pt;
+                display: inline-block;
+                border-radius: 10px;
+                border-color: black;
+                background-color: powderblue;
+                padding: 5px 10px;
+            }
+
+            div {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 13pt;
+                text-decoration: underline;
+                margin: 20px;
+            }
+        
+        </style>
+    </head>
+
+    <body>
+        <script>
+            function async(d) {
+                var request = new XMLHttpRequest();
+                if(d)
+                    request.open("POST", "http://lab01.ru:81/delay.php");
+                else
+                    request.open("POST", "http://lab01.ru:81/a.php");
+                request.setRequestHeader ("Content-type", "application/json ; charset=utf-8");
+                request.send(null);
+                request.addEventListener("readystatechange", function() {
+                if (request.readyState == 4 && request.status == 200) {
+                        document.getElementById('here').innerHTML += "Async request: " + request.responseText + "</br>";
+                    }
+                })
+            }
+
+            function sync(d) {
+                var request = new XMLHttpRequest();
+                if(d)
+                    request.open("POST", "http://lab01.ru:81/delay.php", false);
+                else {
+                    request.open("POST", "http://lab01.ru:81/a.php", false);
+                    console.log("aaaaa");
+                }
+                request.setRequestHeader ("Content-type", "application/json ; charset=utf-8");
+                request.send(null);
+                if (request.readyState == 4 && request.status == 200) {
+                        document.getElementById('here').innerHTML += "Sync request: " + request.responseText + "</br>";
+                }
+                
+            }        
+        </script>
+
+        <h2>Узнать текущее время</h2>
+        <button onclick="async(true)">Async req with delay</button>
+        <button onclick="async()">Async req</button>
+        <button onclick="sync(true)">Sync req with delay</button>
+        <button onclick="sync()">Sync req</button>
+
+        <div id='here'></div>
+    </body>
+</html>

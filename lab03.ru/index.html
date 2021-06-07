@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lab3</title>
+        <meta charset="utf-8">
+        <style type="text/css">
+        
+        * {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            }
+        .nb {
+                display: none;
+                padding: 5px;
+                background-color: lightblue;
+                border: 1px solid black;
+        }
+        a {
+                font-size: 14pt;
+                width: 120px;
+                height: 40px;
+                margin-bottom: 10px;
+                text-align: center;
+                display: inline-block;
+        }
+            
+
+            
+        </style>
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    </head>
+    <body>
+        <h1>Callback</h1>
+        <p id="main-menu"><a href="circle.html">New Page (click me)</a></p>
+        <div id="notification-bar" class="nb"></div>
+        <div id="main"></div>
+        <script>
+            $('#main-menu a').click(function (event) {
+            event.preventDefault();                                         //не по умолчанию
+            $('#main').load(this.href , function (data, status) {
+                $bar = $('#notification-bar');        
+                if (status === 'success') {
+                    $bar.text('The page has been successfully loaded.');
+                } else {
+                    $bar.text('An error occurred.');
+                }        
+                $bar
+                    .slideDown('normal')
+                    .delay(2000)
+                    .slideUp('fast');
+            });
+        });
+        </script>
+        
+    </body>
+</html>

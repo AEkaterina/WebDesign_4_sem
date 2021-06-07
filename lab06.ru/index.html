@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lab6</title>
+        <meta charset="utf-8">
+        <style type="text/css">
+        * {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+        }
+        textarea {
+            width: 300px;
+            height: 150px;
+            border-color:rgb(117, 182, 204);
+            border-radius: 10px;
+            border-width: 4px;
+            text-align: left;
+            font-size: 13pt;
+            padding-top: 10px;
+            margin-bottom: 20px;
+            resize: none;
+        }
+        button {
+            font-size: 14pt;
+            width: 120px;
+            height: 40px;
+            border-radius: 10px;
+            border-color: black;
+            background-color:lightblue;
+            margin-bottom: 10px;
+            text-align: center;
+            display: inline-block;
+        }
+        #result {
+            font-size: 16pt;
+            margin: auto;               
+            width: fit-content;
+            padding: 10px;
+            text-align: center;
+        }
+        </style>
+
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    </head>
+
+    <body>
+        <h1>Преобразование JSON в строку и наоборот</h1>
+        <div id = "info">
+            <textarea id="message">["Cake", "Peach", "Animal", "Moon"]</textarea>
+        </div>
+        <button id="str">Слово на А</button>
+        <div id = "result"><br></div>
+
+        <script>
+            $(document).ready(function() {
+                $("#str").click(function() {
+                    $('result').css("display", "block");
+                    var str = $('#message').val();
+
+                    console.log("incomig info..." + str);
+
+                    arr = JSON.parse(str);
+                    console.log("type of array: " + typeof(arr));
+                    console.log(arr);
+
+                    $("#result").html("Ответ: <br>");
+                    $("#result").append(arr + "<br>typeof: " + typeof(arr));
+
+                    console.log("type of array[0]: " + typeof(arr[0]));
+                    $("#result").append("<br>Слово на A: " + arr.join('').slice(9,15));
+
+                    console.log("To JSON...")
+                    myJSON = JSON.stringify(arr);
+                    console.log(myJSON);
+                    console.log("type of array: " + typeof(myJSON));
+                })
+            })
+        </script>
+    </body>
+
+</html>

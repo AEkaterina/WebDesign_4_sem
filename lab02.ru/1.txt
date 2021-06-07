@@ -1,0 +1,6 @@
+<h2>This is text from 1.txt</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a quam ut leo iaculis accumsan. Nunc mollis mi sed diam condimentum, 
+egestas molestie sem consectetur. Integer molestie, turpis sit amet ultrices suscipit, ante ex imperdiet risus, sit amet suscipit sapien magna eu arcu.</p>
+<p>Duis laoreet ut purus a efficitur. Sed tincidunt, nisl vitae lobortis congue, enim mauris maximus massa, a malesuada velit erat vitae nisl. Sed a elit vulputate, 
+rutrum est ac, egestas lorem. Sed sem velit, finibus at sodales sed, varius a quam. </p> 
+<p>Fusce interdum purus et ligula tincidunt, ut consequat justo luctus. In placerat nisi nec metus ullamcorper.</p>

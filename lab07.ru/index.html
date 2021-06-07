@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lab7</title>
+        <meta charset="utf-8">
+        <style type="text/css">
+            * {
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                text-align: center;
+            }
+            #res {
+                font-size: 14pt;
+                width: 220px;
+                height: 40px;
+                border-radius: 10px;
+                border-color: black;
+                background-color:lightblue;
+                margin-bottom: 10px;
+                text-align: center;
+                display: inline-block;
+            }
+            p {
+                font-size: 14pt;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Cодержимое 6-го, 7-го и 8-го тэга title</h1>
+
+        <input type='button' value='Запросить содержимое' id="res" onclick='start()'/>
+        <br /><br />
+        <div id='show' style='display:none;'>
+            <hr />
+                <p>6-ой тег title: <b><span id='res6'></span></b></p>
+                <p>7-ой тег title: <b><span id='res7'></span></b></p>
+                <p>8-ой тег title: <b><span id='res8'></span></b></p>
+            <hr />
+        </div>
+        
+        <script type='text/javascript'>
+            function start(){  
+                xhttp=new XMLHttpRequest();
+                xhttp.open('GET','info.json',true);
+                xhttp.send();
+                xhttp.onreadystatechange=function(){
+                    if (xhttp.readyState==4){
+                        var json=eval( '('+xhttp.responseText+')' );
+                        document.getElementById('show').style.display='block';
+                        document.getElementById('res6').innerHTML=json.bookbase[5].title;
+                        document.getElementById('res7').innerHTML=json.bookbase[6].title;
+                        document.getElementById('res8').innerHTML=json.bookbase[7].title;
+                    }
+                }
+            }
+            </script>
+    </body>
+</html>
